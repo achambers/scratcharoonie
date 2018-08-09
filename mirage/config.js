@@ -1,4 +1,10 @@
 export default function() {
+  this.get('/staff-members/:id', () => {
+    return {
+      '@type': 'StaffMember',
+      identity: { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx1F4i-Q' }
+    };
+  });
 
   // These comments are here to help you get started. Feel free to delete them.
 
