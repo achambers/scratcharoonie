@@ -6,7 +6,8 @@ export default function() {
       '@type': 'StaffMember',
       identity: { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx2F4i-Q', version: 5 },
       details: {
-        user: { '@type': 'User',
+        user: {
+          '@type': 'User',
           identity: { id: 'urn:x-memento:User:dVEL1rUFIqdpmhXZL_MeAQ', version: 1 },
           name: 'Dave Grohl'
         }
@@ -16,6 +17,18 @@ export default function() {
 
   this.put('/staff-members/:id', (schema, req) => {
     let params = JSON.parse(req.requestBody);
+
+    return new Response(200, {}, params);
+  });
+
+  this.post('/staff-members', (schema, req) => {
+    let params = JSON.parse(req.requestBody);
+
+    params['@type'] = 'StaffMember';
+    params.identity = { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx2F4i-Z', version: 1 };
+
+    params.details.user['@type'] = 'User';
+    params.details.user.identity = { id: 'urn:x-memento:User:dVEL1rUFIqdpmhXZL_MeAZ', version: 1 };
 
     return new Response(201, {}, params);
   });

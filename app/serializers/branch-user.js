@@ -16,19 +16,25 @@ export default ApplicationSerializer.extend({
   serialize(snapshot, options = {}) {
     let json = this._super(...arguments);
 
-    let _phorestMeta = json._phorestMeta;
-    delete json._phorestMeta;
+    if (!this._isNew(snapshot)) {
+      let _phorestMeta = json._phorestMeta;
+      delete json._phorestMeta;
 
-    json['@type'] = _phorestMeta.type;
-    json.identity = {
-      id: _phorestMeta.id,
-      version: _phorestMeta.version
-    };
+      json['@type'] = _phorestMeta.type;
+      json.identity = {
+        id: _phorestMeta.id,
+        version: _phorestMeta.version
+      };
+    }
 
     if (options.includeId) {
       delete json.id;
     }
 
     return json;
+  },
+
+  _isNew(snapshot) {
+    return !snapshot.id;
   }
 });

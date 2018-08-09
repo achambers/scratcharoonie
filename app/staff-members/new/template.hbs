@@ -1,0 +1,9 @@
+<h2>{{name}}</h2>
+
+<input
+  value={{name}}
+  oninput={{action (mut name) value="target.value"}}>
+
+<button {{action "save"}}>Save</button>
+
+{{outlet}}

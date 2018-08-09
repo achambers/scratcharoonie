@@ -3,9 +3,13 @@
 <h2>{{model.branchUser.name}}</h2>
 
 <input
-  value={{model.branchUser.name}}
-  oninput={{action (mut model.branchUser.name) value="target.value"}}>
+       value={{model.branchUser.name}}
+       oninput={{action (mut model.branchUser.name) value="target.value"}}>
 
 <button {{action "save"}}>Save</button>
+
+{{#link-to "staff-members"}}Back{{/link-to}}
+
+{{model.isDirty}}
 
 {{outlet}}
