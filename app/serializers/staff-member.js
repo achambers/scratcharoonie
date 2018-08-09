@@ -1,7 +1,8 @@
 import DS from 'ember-data';
+import ApplicationSerializer from './application';
 
-export default DS.JSONSerializer.extend({
-  extractId(modelClass, resourceHash) {
-    return resourceHash.identity.id.split(':')[3];
+export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
+  attrs: {
+    branchUser: { embedded: 'always' }
   }
 });

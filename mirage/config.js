@@ -2,7 +2,12 @@ export default function() {
   this.get('/staff-members/:id', () => {
     return {
       '@type': 'StaffMember',
-      identity: { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx1F4i-Q' }
+      identity: { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx1F4i-Q' },
+      branchUser: {
+        '@type': 'User',
+        identity: { id: 'urn:x-memento:User:dVEL1rUFIqdpmhXZL_MeAQ' },
+        name: 'Dave Grohl'
+      }
     };
   });
 

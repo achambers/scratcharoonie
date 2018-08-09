@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
-export default DS.RESTAdapter.extend({
+export default ApplicationAdapter.extend({
   pathForType() {
     return 'staff-members';
   }
