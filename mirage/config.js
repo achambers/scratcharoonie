@@ -1,15 +1,23 @@
+import Response from 'ember-cli-mirage/response';
+
 export default function() {
   this.get('/staff-members/:id', () => {
     return {
       '@type': 'StaffMember',
-      identity: { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx1F4i-Q' },
+      identity: { id: 'urn:x-memento:StaffMember:lJFBHAXTmAMXVkyx2F4i-Q', version: 5 },
       details: {
         user: { '@type': 'User',
-          identity: { id: 'urn:x-memento:User:dVEL1rUFIqdpmhXZL_MeAQ' },
+          identity: { id: 'urn:x-memento:User:dVEL1rUFIqdpmhXZL_MeAQ', version: 1 },
           name: 'Dave Grohl'
         }
       }
     };
+  });
+
+  this.put('/staff-members/:id', (schema, req) => {
+    let params = JSON.parse(req.requestBody);
+
+    return new Response(201, {}, params);
   });
 
   // These comments are here to help you get started. Feel free to delete them.

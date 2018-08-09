@@ -1,11 +1,6 @@
-import DS from 'ember-data';
 import ApplicationSerializer from './application';
 
-export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
-  attrs: {
-    branchUser: { embedded: 'always' }
-  },
-
+export default ApplicationSerializer.extend({
   normalize(typeClass, hash) {
     let { id, version }  = hash.identity;
     let type = hash['@type'];
@@ -15,21 +10,11 @@ export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
     delete hash['@type'];
     delete hash.identity;
 
-    let user = hash.details.user;
-    hash.branchUser = user;
-    delete hash.details.user;
-
     return this._super(typeClass, hash);
   },
 
   serialize(snapshot, options = {}) {
     let json = this._super(...arguments);
-
-    let branchUser = json.branchUser;
-    delete json.branchUser;
-
-    json.details = json.details || {};
-    json.details.user = branchUser;
 
     let _phorestMeta = json._phorestMeta;
     delete json._phorestMeta;

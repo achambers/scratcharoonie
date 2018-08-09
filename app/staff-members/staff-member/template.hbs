@@ -1,4 +1,11 @@
 <h1>{{model.id}}</h1>
 
 <h2>{{model.branchUser.name}}</h2>
+
+<input
+  value={{model.branchUser.name}}
+  oninput={{action (mut model.branchUser.name) value="target.value"}}>
+
+<button {{action "save"}}>Save</button>
+
 {{outlet}}
