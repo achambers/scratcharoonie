@@ -13,7 +13,7 @@ module.exports = function(defaults) {
   
   
   //sdfsfdgdgsfd
-  // If you needsfgddfg to use different assets in different
+  // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
   // object's keys should be the environment name and the values
   // should be the asset to use in that environment.
